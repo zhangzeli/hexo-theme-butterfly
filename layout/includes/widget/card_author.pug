@@ -4,7 +4,7 @@
       .data-item.is_center
         img.lazyload.avatar_img(src=url_for(theme.avatar) onerror=`onerror=null;src='${theme.lodding_bg.flink}'`)
         p.author-info__name.is_center= config.author
-        p.author-info__description.is_center= config.description
+        p.author-info__description.is_center= config.oop
 
     .post_data.data_config
       if site.posts.length

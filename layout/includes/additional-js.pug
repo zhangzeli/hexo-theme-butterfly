@@ -31,7 +31,9 @@ if (theme.canvas_nest && theme.canvas_nest.enable)
   include ./third-party/canvas-nest.pug 
 
 if theme.baidu_push && theme.baidu_push.enable
-  script(src=url_for('js/baidupush.js')) 
+  script(src=url_for('js/baidupush.js'))
+if theme.qihu_push && theme.qihu_push.enable
+  script(src=url_for('js/qihupush.js'))  
 
 if theme.activate_power_mode.enable
   script(src=url_for(theme.CDN.activate_power_mode))

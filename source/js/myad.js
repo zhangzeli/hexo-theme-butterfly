@@ -1,4 +1,7 @@
 (function(){
+    if(window.isMobile()){
+        return;
+    }
     let body = $("body")
     let content=$('#content-outer')
     let divleft = $("<div id='divleft'>广告位招租联系853089986@qq.com</div>")
