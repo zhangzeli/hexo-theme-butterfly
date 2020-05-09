@@ -1,76 +1,131 @@
 #nav
   position: relative
-  margin-bottom: 1rem
+  width: 100%
+  background-color: $light-blue
+  background-attachment: local
+  background-position: center center
+  background-size: cover
+  background-repeat: no-repeat
+  transition: all .5s
 
+  // index
   &.full_page
     height: $index_top_img_height
-  
-  .nav_bg
-    width: 100%
-    height: 100%
-    background-color: $light-blue
-    background-position: center
-    background-size: cover
-    background-attachment: local
 
-  &.not_index_bg
-    height: 20rem
+    #site-info
+      position: absolute
+      top: $index_site_info_top
+      padding: 0 .5rem
+      width: 100%
 
-  #site-social-icons
+  #site_title,
+  #site_subtitle,
+  #scroll_down .scroll-down-effects
+    color: $light-grey
+    text-align: center
+    text-shadow: .1rem .1rem .2rem rgba(0, 0, 0, .15)
+    line-height: 1.5
+
+  #site_title
+    margin: 0
+    font-size: 1.3rem
+
+  #site_subtitle
+    font-size: .8rem
+
+  #site_social_icons
+    display: none
     margin: 0 auto
     width: 15rem
     text-align: center
-    display: none
 
     .social-icon
-      margin: 0 0.5rem
+      margin: 0 .5rem
       color: $light-grey
-      text-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.15)
-      font-size: .9rem
+      text-shadow: .1rem .1rem .2rem rgba(0, 0, 0, .15)
+      font-size: 1rem
       cursor: pointer
 
-      &:hover
-        color: $white
-
-#site-info
-  position: absolute
-  width: 100%
-  top: $index_site_info_top
-
-#site-title,
-#site-sub-title
-  color: $light-grey
-  text-align: center
-  text-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.15)
-  line-height: 1.5
-
-#site-title
-  font-weight: bold
-  font-size: 1.3rem
-
-#site-sub-title
-  font-size: 0.8rem
-
-#page_site-info
-  position: absolute
-  top: 10rem
-  width: 100%
-
-.scroll-down
-  position: absolute
-  bottom: 0
-  width: 100%
-  cursor: pointer
-  height: 42px
-  font-size: 30px
-  text-align: center
-
-  .scroll-down-effects
+  #scroll_down
     position: absolute
-    color: $white
+    bottom: 0
+    width: 100%
+    cursor: pointer
 
-#header
-  position: relative
+    .scroll-down-effects
+      position: relative
+      width: 100%
+      font-size: 30px
+
+  // page
+  &.not-index-bg
+    height: 20rem
+
+  #page_site-info
+    position: absolute
+    top: 10rem
+    padding: 0 .5rem
+    width: 100%
+
+  // post
+  &.post-bg
+    height: 20rem
+
+    &:before
+      position: absolute
+      top: 0
+      left: 0
+      display: block
+      width: 100%
+      height: 100%
+      background-color: alpha($dark-black, .5)
+      content: ''
+
+    #post-info
+      position: absolute
+      bottom: 1.5rem
+      padding: 0 8%
+      width: 100%
+      color: $light-grey
+      text-align: left
+
+      #post-title
+        margin-bottom: .4rem
+        font-size: 1.5rem
+
+        .posttitle
+          display: -webkit-box
+          overflow: hidden
+          line-height: 1.5
+          -webkit-line-clamp: 3
+          -webkit-box-orient: vertical
+
+      #post-meta
+        font-size: 95%
+
+        > .meta-secondline,
+        > .meta-thirdline
+          display: inline
+
+        .word-count,
+        #busuanzi_value_page_pv,
+        .comment-count
+          padding-left: .2rem
+
+        .post-meta
+          &__separator
+            margin: 0 .3rem
+
+          &__icon
+            margin-right: .2rem
+
+        a
+          color: $light-grey
+          transition: all .3s ease-out
+
+          &:hover
+            color: $light-blue
+            text-decoration: underline
 
 #page-header
   position: absolute
@@ -78,23 +133,30 @@
   z-index: 99
   padding: 10px 36px
   width: 100%
+  height: 58px
   border: none
   font-size: 18px
-  transition: all .3s
   opacity: 0
+  transition: all .5s
+
+  &:not(.fixed)
+    .menus
+      padding-right: 0 !important
 
   .toggle-menu
     display: none
-    padding-top: 0.6rem
-    color: $light-grey
-    cursor: pointer
+    padding: .1rem 0 0 .3rem
+    vertical-align: top
 
     &:hover
       color: $white
-  
+
+    &.is-visible-inline
+      .site-page
+        font-size: inherit
+
   a
     color: $light-grey
-    text-decoration: none
 
     &:hover
       color: $white
@@ -103,157 +165,156 @@
     position: fixed
     top: -60px
     z-index: 101
-    background: alpha($white, 0.8)
-    box-shadow: 0 5px 6px -5px alpha($grey, 0.6)
-    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out
-
-    &.open-sidebar
-      .site-page
-        visibility: hidden
+    background: alpha($white, .8)
+    box-shadow: 0 5px 6px -5px alpha($grey, .6)
+    transition: transform .2s ease-in-out, opacity .2s ease-in-out
 
     a,
     #site-name,
     .toggle-menu
-      color: $light-black
+      color: $font-black
       text-shadow: none
 
       &:hover
-        color: $light-blue       
+        color: $light-blue
 
   &.visible
+    transition: all .5s
     transform: translate3d(0, 100%, 0)
-    transition: all .3s
 
     .menus_item_child
       background-color: $white !important
 
-      &:before
-        border-color: transparent transparent $white !important
-
   #site-name
-    text-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.15)
+    text-shadow: .1rem .1rem .2rem rgba($dark-black, .15)
     font-weight: bold
     cursor: pointer
 
-  .menus_item
-    display: inline-block
-    padding: 0 0 0 0.7rem
+  .menus_items
+    display: inline
 
-    &:hover,&:focus
-      .menus_item_child
-        display: block
-      
+    .menus_item
+      position: relative
+      display: inline-block
+      padding: 0 0 0 .7rem
+
+      &:hover
+        .menus_item_child
+          display: block
+
+        .menus-expand
+          transform: rotate(180deg) !important
+
       .menus-expand
-        transform: rotate(180deg) !important
-    
-    .menus-expand
-      padding: 4px        
-      transform: rotate(0deg)
-      transition: all .3s
+        padding: 4px
+        transition: all .3s
+        transform: rotate(0)
 
-    .menus_item_child
-      position: absolute
-      background-color: alpha($white, 0.8)
-      border-radius: 5px
-      box-shadow: 0 5px 20px -4px rgba(0,0,0,.5)
-      display: none
-      opacity: 1
-      animation: sub_menus .3s .1s ease both
-      padding: 0
-      margin-top: 10px
-
-      &:before
-        content: ""
-        position: absolute
-        top: -20px
-        left: 50%
-        margin-left: -10px
-        border-width: 10px
-        border-style: solid
-        border-color: transparent transparent alpha($white, 0.8)
-
-      li
-        list-style: none
-        text-align: center
-        padding: 0px 10px
-        
-        &:first-child
-          padding: 6px 10px 0
-
-        &:last-child
-          padding: 0px 10px 6px 
+      & > a
+        &:after
+          position: absolute
+          bottom: 0
+          left: 0
+          z-index: -1
+          width: 0
+          height: 3px
+          background-color: lighten($theme-color, 30%)
+          content: ''
+          transition: all .3s ease-in-out
 
         &:hover
-          a,i 
-            color: $theme-color
-        
-        a
-          color: #3b3a3a
-          text-shadow: none
-#search_button
-  padding: 0 0 0 0.7rem
+          &:after
+            width: 100%
 
-.site-page
-  position: relative
-  padding-bottom: 0.3rem
-  text-shadow: 0.05rem 0.05rem 0.1rem rgba(0, 0, 0, 0.3)
-  font-size: 0.7rem
-  cursor: pointer
+      .menus_item_child
+        position: absolute
+        right: 0
+        display: none
+        margin-top: 8px
+        padding: 0
+        width: max-content
+        background-color: alpha($white, .8)
+        box-shadow: 0 5px 20px -4px rgba($dark-black, .5)
+        animation: sub_menus .3s .1s ease both
 
-#page-header .menus_item > .site-page
-  &::after
-    position: absolute
-    bottom: 0
-    left: 0
-    z-index: -1
-    width: 0
-    height: 3px
-    background-color: lighten($theme-color, 30%)
-    content: ""
-    transition: all 0.3s ease-in-out
+        &:before
+          position: absolute
+          top: -8px
+          left: 0
+          width: 100%
+          height: 20px
+          content: ''
 
-  &:hover
-    &::after
-      width: 100%
+        li
+          list-style: none
 
+          &:hover
+            background: $theme-color
 
-@media screen and (min-width: $sm)  
-  #site-title
-    font-size: 2rem
+          a
+            display: inline-block
+            padding: .3rem .7rem
+            width: 100%
+            color: $font-black
+            text-shadow: none
 
-  #site-sub-title
-    font-size: 1.2rem
+  #search_button
+    display: inline
+    padding: 0 0 0 .7rem
 
+  .site-page
+    position: relative
+    padding-bottom: .3rem
+    text-shadow: .05rem .05rem .1rem rgba($dark-black, .3)
+    font-size: .7rem
+    cursor: pointer
+
+@media screen and (min-width: $sm)
+  #nav
+    #site_title
+      font-size: 2rem
+
+    #site_subtitle
+      font-size: 1.2rem
 
 @media screen and (max-width: $sm)
   #page-header
-    padding: 10px 0.8rem
-  
-  #nav 
-    #site-social-icons
+    padding: 10px .8rem
+
+  #nav
+    #site_social_icons
       display: block
 
-    &.not_index_bg
+    &.not-index-bg
       height: 14rem
 
     #page_site-info
       top: 7rem
-  
-  #top-container
-    height: 14rem
 
-    #post-info
-      bottom: 1rem
-      padding: 0 5%
-  
-    .mobile_hidden
-      display: none
+    &.post-bg
+      height: 18rem
 
+      & > #post-info
+        bottom: 1rem
+        padding: 0 5%
 
-  
-@media screen and (max-width: $bg)
-  #page-header
-    &.fixed
-      &.open-sidebar
-        .site-page
-          visibility: visible
+        & > #post-title
+          font-size: 1.2rem
+
+        & > #post-meta
+          font-size: 90%
+
+          .post-meta__categories
+            display: none
+
+          .meta-thirdline
+            display: block
+
+            .post-meta-pv-cv
+              .post-meta__separator:first-child
+                display: none
+
+            if !hexo-config('busuanzi.page_pv')
+              .post-meta-commentcount
+                .post-meta__separator
+                  display: none
