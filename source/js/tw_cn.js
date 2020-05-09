@@ -84,14 +84,14 @@ function Simplized(cc) {
 function translateInitilization() {
     translateButtonObject = document.getElementById(translateButtonId);
     if (translateButtonObject) {
-        with(translateButtonObject) {
+        // with(translateButtonObject) {
             if (typeof(document.all) != "object") {
-                href = "javascript:translatePage();"
+                translateButtonObject.href = "javascript:translatePage();"
             } else {
-                href = "#";
-                onclick = new Function("translatePage(); return false;")
+                translateButtonObject.href = "#";
+                translateButtonObject.onclick = new Function("translatePage(); return false;")
             }
-        }
+        // }
         if (currentEncoding != targetEncoding) {
             setTimeout("translateBody()", translateDelay);
             if (targetEncoding == 1) translateButtonObject.innerHTML = msgToSimplifiedChinese;

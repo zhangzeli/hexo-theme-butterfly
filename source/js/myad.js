@@ -8,9 +8,9 @@
     let divright = $("<div id='divright'>广告位招租联系微信twobixiaoxin</div>")
     content.append(divleft)
     content.append(divright)
-    console.log(content)
+    // console.log(content)
     let navHeighe = $('#nav').height();
-    console.log(navHeighe)
+    // console.log(navHeighe)
     $(window).scroll(function(){
         var scrollTopHeighet = $(this).scrollTop()
         if(scrollTopHeighet>=navHeighe){
